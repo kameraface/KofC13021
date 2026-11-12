@@ -11,7 +11,7 @@ export default function App() {
       </header>
       <main className="content">
         <div className="council-header">
-          <img className="emblem" src="/kofc-emblem.png" alt="Knights of Columbus emblem" />
+          <img className="emblem" src={`${import.meta.env.BASE_URL}kofc-emblem.png`} alt="Knights of Columbus emblem" />
           <div><h1>{council.title}</h1><p className="subtitle">{council.subtitle}</p></div>
         </div>
 
