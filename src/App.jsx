@@ -5,9 +5,10 @@ export default function App() {
   return (
     <div className="page">
       <header className="site-header">
-        <div className="parish-brand"><span className="parish-mark" aria-hidden="true" />
-          <span className="parish-stack"><span className="parish-over">OUR LADY OF</span><span className="parish-name">Lourdes</span><span className="parish-under">CATHOLIC PARISH</span></span>
-        </div><span className="menu-icon" aria-hidden="true">☰</span>
+        {/* Logo: original artwork from lourdesdenver.org (olol_centered_white-01.png, 2100x735), resized copy in public/ */}
+        <a className="parish-brand" href="https://lourdesdenver.org/" aria-label="Our Lady of Lourdes Catholic Parish — parish home">
+          <img className="parish-logo" src={`${import.meta.env.BASE_URL}lourdes-logo.png`} alt="Our Lady of Lourdes Catholic Parish" />
+        </a><span className="menu-icon" aria-hidden="true">☰</span>
       </header>
       <main className="content">
         <div className="council-header">
