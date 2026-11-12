@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { events, formatDate, formatShort, polls, slides } from "../data/content";
 import { addRecord, addSignup, castVote, records, signupsFor, tally, voteFor } from "../lib/storage";
@@ -49,83 +49,6 @@ export function EventList({ items }) {
       ))}
     </div>
   );
-}
-
-export function Calendar() {
-  const today = new Date();
-  const [cursor, setCursor] = useState(new Date(today.getFullYear(), today.getMonth(), 1));
-  const [selected, setSelected] = useState(iso(today));
-
-  const cells = useMemo(() => buildMonth(cursor), [cursor]);
-  const selectedEvents = events.filter((event) => event.date === selected);
-
-  return (
-    <div className="calendar-layout">
-      <div className="panel">
-        <div className="cal-head">
-          <button className="btn ghost" type="button" onClick={() => setCursor(shift(cursor, -1))}>Previous</button>
-          <h2>{cursor.toLocaleDateString("en-US", { month: "long", year: "numeric" })}</h2>
-          <button className="btn ghost" type="button" onClick={() => setCursor(shift(cursor, 1))}>Next</button>
-        </div>
-        <div className="weekdays">
-          {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => <span key={day}>{day}</span>)}
-        </div>
-        <div className="days">
-          {cells.map((cell) => {
-            const count = events.filter((event) => event.date === cell.iso).length;
-            return (
-              <button
-                key={cell.iso + cell.inMonth}
-                type="button"
-                className={`day${cell.inMonth ? "" : " out"}${cell.iso === selected ? " selected" : ""}${count ? " has" : ""}`}
-                onClick={() => setSelected(cell.iso)}
-              >
-                {cell.day}
-                <span className="sr">{count ? `, ${count} events` : ""}</span>
-                <div>{Array.from({ length: count }).map((_, i) => <i className="dot" key={i} />)}</div>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-      <aside className="panel">
-        <p className="kicker">{formatDate(selected)}</p>
-        {selectedEvents.length === 0 ? <p>Nothing posted this day.</p> : null}
-        {selectedEvents.map((event) => (
-          <p key={event.slug}>
-            <Link to={`/events/${event.slug}`}><strong>{event.title}</strong></Link>
-            <br />
-            <span className="meta">{event.time} · {event.place}</span>
-          </p>
-        ))}
-        <Link className="btn secondary" to="/events">All upcoming</Link>
-      </aside>
-    </div>
-  );
-}
-
-function iso(date) {
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, "0");
-  const d = String(date.getDate()).padStart(2, "0");
-  return `${y}-${m}-${d}`;
-}
-function shift(date, months) {
-  return new Date(date.getFullYear(), date.getMonth() + months, 1);
-}
-function buildMonth(cursor) {
-  const start = new Date(cursor.getFullYear(), cursor.getMonth(), 1);
-  const gridStart = new Date(start);
-  gridStart.setDate(1 - start.getDay());
-  return Array.from({ length: 42 }, (_, index) => {
-    const date = new Date(gridStart);
-    date.setDate(gridStart.getDate() + index);
-    return {
-      iso: iso(date),
-      day: date.getDate(),
-      inMonth: date.getMonth() === cursor.getMonth(),
-    };
-  });
 }
 
 export function SignupForm({ event }) {

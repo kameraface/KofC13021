@@ -285,22 +285,30 @@ p { margin: 0 0 0.8rem; }
 .principle { border-top: 3px solid var(--crimson); padding-top: 0.7rem; }
 .principle strong { display: block; font-family: var(--serif); font-size: 1.3rem; }
 
-.calendar-layout { display: grid; grid-template-columns: 1.4fr 0.8fr; gap: 1rem; align-items: start; }
-.cal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
-.cal-head h2 { margin: 0; font-size: 1.6rem; }
-.weekdays, .days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.3rem; }
-.weekdays span { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-align: center; }
-.day {
-  min-height: 4.4rem;
-  border: 1px solid var(--line);
-  background: white;
-  text-align: left;
-  padding: 0.35rem;
-  cursor: pointer;
-}
-.day.out { opacity: 0.4; }
-.day.selected { outline: 2px solid var(--navy); }
-.day.has { background: #fff7ee; }
+/* Designed calendar space (not a month grid, not Google's widget):
+   navy header band, featured next event, chronological stream grouped by month. */
+.gcal-frame { background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.gcal-head { background: var(--navy); color: #f7f1e6; padding: 1.2rem 1.3rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; align-items: end; border-top: 6px solid var(--gold); }
+.gcal-head h2 { margin: 0; font-size: 1.8rem; }
+.gcal-head .kicker { color: var(--gold-2); }
+.gcal-head-actions { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+.chip.live { color: var(--gold-2); border-color: rgba(230,211,161,.5); }
+.btn.light { color: #f7f1e6; border-color: rgba(247,241,230,.6); }
+.gcal-notice { background: #fff8ea; border-bottom: 1px solid #e6d3a1; padding: 1rem 1.3rem; }
+.gcal-notice ol { margin: 0.4rem 0 0.4rem 1.2rem; }
+.gcal-state { padding: 1rem 1.3rem; color: var(--muted); }
+.gcal-next { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1.2rem; padding: 1.4rem 1.3rem; border-bottom: 1px solid var(--line); }
+.gcal-next h3 { margin: 0 0 0.4rem; font-size: 2rem; }
+.gcal-date-rail { background: var(--crimson); color: white; text-align: center; padding: 0.8rem 0.4rem; align-self: start; }
+.gcal-date-rail span { display: block; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.gcal-date-rail strong { display: block; font-family: var(--serif); font-size: 2.6rem; line-height: 1; }
+.gcal-date-rail.small strong { font-size: 1.9rem; }
+.gcal-month > h3 { margin: 0; padding: 1rem 1.3rem 0.4rem; color: var(--navy); font-size: 1.35rem; }
+.gcal-row { display: grid; grid-template-columns: 5rem 1fr auto; gap: 1rem; padding: 0.9rem 1.3rem; border-top: 1px solid var(--line); align-items: start; }
+.gcal-row h4 { margin: 0 0 0.25rem; font-size: 1.25rem; }
+.gcal-row-side { display: grid; gap: 0.4rem; justify-items: end; font-size: 0.9rem; }
+.gcal-foot { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 0.9rem 1.3rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.92rem; }
+@media (max-width: 700px) { .gcal-next, .gcal-row { grid-template-columns: 1fr; } .gcal-row-side { justify-items: start; } }
 .sr {
   position: absolute;
   width: 1px;
@@ -371,7 +379,7 @@ th { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; colo
 .search-hit:hover { border-color: var(--navy); }
 
 @media (max-width: 1080px) {
-  .hero, .calendar-layout, .grid-3, .grid-2, .principles, .person-grid, .footer-grid, .grid-4 {
+  .hero, .grid-3, .grid-2, .principles, .person-grid, .footer-grid, .grid-4 {
     grid-template-columns: 1fr;
   }
   .grid-2.keep, .split { grid-template-columns: 1fr; }

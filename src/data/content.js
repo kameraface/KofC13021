@@ -338,7 +338,7 @@ export const pages = [
   { title: "Programs we support", href: "/charity/programs", section: "Charity", text: "faith in action coats food" },
   { title: "Community partners", href: "/charity/partners", section: "Charity", text: "lourdes state council supreme" },
   { title: "Events", href: "/events", section: "Events", text: "upcoming council events" },
-  { title: "Calendar", href: "/events/calendar", section: "Events", text: "interactive calendar month" },
+  { title: "Calendar", href: "/events/calendar", section: "Events", text: "council calendar upcoming events google calendar denver time" },
   { title: "Event sign-up", href: "/events/signup", section: "Events", text: "sign up register volunteer" },
   { title: "Golf tournament", href: "/events/golf", section: "Events", text: "annual golf evergreen sponsors" },
   { title: "Photo gallery", href: "/events/gallery", section: "Events", text: "past events photographs reel" },

@@ -1,7 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import { events, eventBySlug, formatDate, slides } from "../data/content";
 import { PageHero, SampleNote } from "../components/Layout";
-import { Calendar, EventList, SignupForm } from "../components/Widgets";
+import { EventList, SignupForm } from "../components/Widgets";
+import CouncilCalendar from "../components/CouncilCalendar";
 import { upcomingEvents } from "../data/content";
 
 export function EventsHome() {
@@ -16,8 +17,8 @@ export function EventsHome() {
 export function CalendarPage() {
   return (
     <>
-      <PageHero kicker="Events" title="Calendar" lede="A month at a time. Select a day to see what is posted." />
-      <Calendar />
+      <PageHero kicker="Events" title="Calendar" lede="What is next, in order — fed from the council’s Google Calendar when it is connected. Times in America/Denver." />
+      <CouncilCalendar />
     </>
   );
 }

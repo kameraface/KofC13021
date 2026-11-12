@@ -13,6 +13,39 @@ npm run dev
 
 Open the address Vite prints. `npm run build` writes a static site to `dist/`.
 
+## Connect Google Calendar (still needed — Karl)
+
+The calendar space on `/events/calendar` is **not** a month grid and **not** Google’s
+default embed/widget. It is the site’s own designed frame (navy header, featured
+“Next up” event, chronological stream grouped by month, all times America/Denver)
+fed directly from the council’s Google Calendar API. No iframe.
+
+**Not yet in this project — please provide all three:**
+
+1. In the council’s Google account, set that calendar to **public**, **“See all event
+   details,”** and keep personal events off it.
+2. The **Calendar ID** — Google Calendar → Settings → select the council calendar →
+   *Integrate calendar* → Calendar ID.
+3. A **Google Calendar API key** restricted to the **Calendar API** only and to this
+   site’s domains (HTTP referrers), plus `http://localhost:5173/*` for local work.
+
+Then:
+
+```bash
+cp .env.example .env.local   # fill in both values, never commit .env.local
+npm run dev                  # restart after editing
+```
+
+For production, set the same two variables (`VITE_GOOGLE_CALENDAR_ID`,
+`VITE_GOOGLE_CALENDAR_API_KEY`) in the host’s environment and rebuild. Until they are
+set, the frame shows clearly-marked **sample dates** so the page is never blank.
+
+> **Pen design:** the `.pen` file from Karl’s local folder (`/Users/Karl/gitcode/kofc13021`)
+> is **not in this repo or in the cloud workspace**, so it could not be opened here.
+> Please add the `.pen` file to the repo (or attach it to the PR). The frame above is
+> built to be reconciled against it — flag any frame detail (order, colours, labels)
+> that disagrees and it will be changed to match.
+
 ## Edit the council’s facts
 
 Names, events, news, and polls live in `src/data/content.js`.
