@@ -11,7 +11,7 @@ Not found in this project, so samples (marked **Sample**) show until connected:
 2. **Calendar ID** (Settings → Integrate calendar).
 3. **Google Calendar API key** restricted to the Calendar API and this site’s domains, plus `http://localhost:5173/*`.
 
-Copy `.env.example` to `.env.local` with `VITE_GOOGLE_CALENDAR_ID` / `VITE_GOOGLE_CALENDAR_API_KEY`, restart `npm run dev`.
+Calendar ID received: `kofc13021@gmail.com` (embed: https://calendar.google.com/calendar/embed?src=kofc13021%40gmail.com&ctz=America%2FDenver). As of Nov 11, 2026 that embed returns 401/sign-in and public iCal 404 — it is **not public yet**, so a raw Google iframe would be blank and would also be Google’s month grid, contrary to the Pen agenda. Make it public, then copy `.env.example` to `.env.local` with `VITE_GOOGLE_CALENDAR_API_KEY`, restart `npm run dev`.
 
 ## Confirmed facts
 Father Damen McCaddon Council 13021, Our Lady of Lourdes, 2200 S. Logan St., Denver, CO 80210 · 303.722.6861 · Grand Knight J.D. Munn (July 2026–July 2028) · Membership: Evan Frazier, kofc13021@gmail.com. Unknown officer seats / charter roll left blank; charity YTD and board-PDF / interest-form links remain Pen placeholders until supplied. Gifts straight to the council are generally not tax-deductible.

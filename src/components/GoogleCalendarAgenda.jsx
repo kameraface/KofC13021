@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { fetchUpcomingEvents, formatDateCol, formatMeta, isCalendarConfigured, monthLabel } from "../lib/googleCalendar";
+import { embedUrl, fetchUpcomingEvents, formatDateCol, formatMeta, isCalendarConfigured, monthLabel } from "../lib/googleCalendar";
 import { sampleEvents } from "../data/content";
 
 /**
@@ -58,9 +58,9 @@ export default function GoogleCalendarAgenda() {
             </div>
           </div>
         ))}
-      <div className="gcal-footer"><span>{footerLeft}</span><span className="gcal-footer-right">Google Calendar</span></div>
+      <div className="gcal-footer"><span>{footerLeft}</span><a className="gcal-footer-right" href={embedUrl} target="_blank" rel="noreferrer">Google Calendar ↗</a></div>
       {!isCalendarConfigured && (
-        <p className="gcal-setup">Calendar not connected yet — council: set the calendar public (“See all event details”), then add its Calendar ID and a restricted API key as <code>VITE_GOOGLE_CALENDAR_ID</code> / <code>VITE_GOOGLE_CALENDAR_API_KEY</code> (see <code>.env.example</code>). Sample dates above are marked as samples.</p>
+        <p className="gcal-setup">Calendar <code>kofc13021@gmail.com</code> is linked, but not public yet — its embed currently returns a Google sign-in (401), so an iframe here would be blank for visitors. Council: set it public (“See all event details”) and add a restricted API key as <code>VITE_GOOGLE_CALENDAR_API_KEY</code> (see <code>.env.example</code>); this agenda will then fill from that calendar. Sample dates above are marked as samples.</p>
       )}
     </div>
   );

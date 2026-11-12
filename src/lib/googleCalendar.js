@@ -1,8 +1,10 @@
 export const TZ = "America/Denver";
 export const calendarConfig = {
-  id: import.meta.env.VITE_GOOGLE_CALENDAR_ID || "",
+  // Calendar ID supplied by council (from embed URL src=kofc13021@gmail.com). Not a secret.
+  id: import.meta.env.VITE_GOOGLE_CALENDAR_ID || "kofc13021@gmail.com",
   apiKey: import.meta.env.VITE_GOOGLE_CALENDAR_API_KEY || "",
 };
+export const embedUrl = "https://calendar.google.com/calendar/embed?src=kofc13021%40gmail.com&ctz=America%2FDenver";
 export const isCalendarConfigured = Boolean(calendarConfig.id && calendarConfig.apiKey);
 
 export async function fetchUpcomingEvents({ timeMin, maxResults = 25 } = {}) {
