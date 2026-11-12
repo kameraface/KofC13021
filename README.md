@@ -22,3 +22,6 @@ npm install
 npm run dev   # http://localhost:5173
 npm run build
 ```
+
+## GitHub Pages
+Live at https://kameraface.github.io/kofc13021/ — Pages source is the built `gh-pages` branch (not raw source; serving source loads uncompiled JSX and renders blank). After changes: `npm run build`, then publish `dist/` to `gh-pages`. Relative `base: ./` in vite.config.js is required for the `/kofc13021/` subpath.
